@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QBO OAuth callback</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 36rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <h1>Connecting…</h1>
+  <p>Forwarding the Intuit authorization code to the local probe on <code>localhost:8765</code>.</p>
+  <p id="msg">If nothing happens, start <code>python probe_deposits.py auth</code> and retry.</p>
+  <script>
+    (function () {
+      var q = window.location.search || "";
+      var target = "http://localhost:8765/callback" + q;
+      document.getElementById("msg").textContent = "Redirecting to " + target;
+      window.location.replace(target);
+    })();
+  </script>
+</body>
+</html>
